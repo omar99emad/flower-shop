@@ -8,3 +8,4 @@ class AModel(models.Model):
     season_end = fields.Date("Season End Date")
     watering_frequency = fields.Integer(help="Frequency is in number of days")
     watering_amount = fields.Float("watering Amount(ml)")
+ 

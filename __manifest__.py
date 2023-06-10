@@ -27,6 +27,7 @@
         'security/ir.model.access.csv',
         'views/flower_flower_views.xml',
         'views/product_product_views.xml',
+        'views/template_product_inhert.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

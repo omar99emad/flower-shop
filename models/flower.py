@@ -1,4 +1,5 @@
 from odoo import models, fields
+
 class AModel(models.Model):
     _name = 'flower.flower'
 
@@ -8,4 +9,8 @@ class AModel(models.Model):
     season_end = fields.Date("Season End Date")
     watering_frequency = fields.Integer(help="Frequency is in number of days")
     watering_amount = fields.Float("watering Amount(ml)")
+
+    def name_get(self):
+        return [(flower.id, "{} ({})".format(flower.scientific_name, flower.name)) for flower in self]
+
  

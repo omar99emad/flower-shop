@@ -1,0 +1,42 @@
+<odoo>
+    <data>
+
+        <record id="flower_shop_stock_lot_view" model="ir.ui.view">
+            <field name="name">stock.production.lot.form.inherit</field>
+            <field name="model">stock.production.lot</field>
+            <field name="inherit_id" ref="stock.view_production_lot_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="before">
+                    <header>
+                    <field name="is_flower" invisible="1"/>
+                    <button string="Water Flower" type="object" name="action_water_flower" class="oe_highlight"
+                            attrs="{'invisible': [('is_flower', '=', False)]}"/>
+                    </header>
+                </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button class="oe_stat_button"
+                        name="action_open_watering_times"
+                        icon="fa-shower"
+                        attrs="{'invisible': [('is_flower', '=', False)]}"
+                        type="object">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text text-wrap">Watering Times</span>
+                    </div>
+                </button>
+            </xpath>
+
+            </field>
+        </record>
+
+
+        <record id="action_water_flower" model="ir.actions.server">
+            <field name="name">Water Flower</field>
+            <field name="model_id" ref="model_stock_production_lot"/>
+            <field name="state">code</field>
+            <field name="code">records.action_water_flower()</field> 
+        </record>
+
+
+        
+    </data> 
+</odoo>

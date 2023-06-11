@@ -1,0 +1,46 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="flower_shop.flower_water_form_view">
+    <field name="name">flower_water_form</field>
+    <field name="model">flower.water</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                    <group>
+                        <field name="flower_id"/>
+                        <field name="watering_date"/>
+                        <field name="notes"/>
+                    </group>
+                </group>
+            </sheet>
+        </form>
+    </field>
+    </record>
+
+        <record model="ir.ui.view" id="flower_shop.flower_water_list_view">
+            <field name="name">flower_water_list</field>
+            <field name="model">flower.water</field>
+            <field name="arch" type="xml">
+                <tree>
+                <field name="flower_id"/>
+                <field name="watering_date"/>
+                <field name="notes"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+<record model="ir.actions.act_window" id="flower_shop.flower_water_action_window">
+  <field name="name">Watering Events</field>
+  <field name="res_model">flower.water</field>
+  <field name="view_mode">tree,form</field>
+</record>
+
+<!--For more convenience, add a server action that automatically attempts to water all the selected plants 
+    from the stock.production.lot list view-->
+
+
+  </data>
+</odoo>  

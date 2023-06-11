@@ -20,14 +20,16 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','product','sale'],
+    'depends': ['base','product','sale','web'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
         'views/flower_flower_views.xml',
         'views/product_product_views.xml',
-        'views/template_product_inhert.xml'
+        'views/template_product_inhert.xml',
+        'views/flower_water_views.xml',
+        'views/stock_production_lot_inhert.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

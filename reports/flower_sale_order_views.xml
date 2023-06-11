@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<data>
+<template id="report_sale_order">
+    <t t-call="web.html_container">
+        <t t-set="company" t-value="docs[0].company_id"/>
+        <t t-set="report_header_style" t-value="'display: none;'"/>
+        <t t-set="footer" t-value="'oe_hidden;'"/>
+        <t t-call="web.external_layout_boxed">
+            <style>
+                .page{
+                    padding-top: 70px;
+                
+                }
+                .flower-page {
+                    page-break-before: always;
+                    
+                }
+                .flower-box {
+                    margin_top: 30px;
+                    display: inline-block;
+                    width: 100%;
+                    
+                    border: 1px solid black;
+                }
+                .flower-box p{
+                    font-size: 8px;
+                    margin-bottom: 5px;
+                }
+                .flower-left {
+                    
+                    padding: 5px;
+                    float: left;
+                    width: 50%;
+                    border-right: 1px solid black;
+                }
+                .flower-right {
+                    background-color: lightgray;
+                    padding: 5px;
+                    float: left;
+                    width: 50%;
+                }
+
+            </style>
+            <t t-foreach="docs" t-as="order">
+                <!-- Company name on the first page -->
+                <div class="page" style="text-align: center;">
+                    <h5>Company: <t t-esc="order.company_id.name"/></h5>
+                </div>
+
+                <!-- Flower information on subsequent pages -->
+                <t t-foreach="order.order_line" t-as="line">
+                    <div class="content">
+                        <div class="flower-page page">
+                        <h6><b>Flower: <t t-esc="line.product_id.name"/></b></h6>
+                        <div class="flower-box">
+                            <div class="flower-left">
+                                <p>Common Name: <t t-esc="line.product_id.flower_id.name"/></p>
+                                <p>Season Start Date: <t t-esc="line.product_id.flower_id.season_start"/></p>
+                                <p>Watering Frequency: <t t-esc="line.product_id.flower_id.watering_frequency"/></p>
+                            </div>
+                            
+                                <div class="flower-right">
+                                    <p><b>Scientific Name:</b> <t t-esc="line.product_id.flower_id.scientific_name"/></p>
+                                    <p><b>Season End Date:</b> <t t-esc="line.product_id.flower_id.season_end"/></p>
+                                    <p><b>Watering Amount:</b> <t t-esc="line.product_id.flower_id.watering_amount"/></p>
+                                </div>
+
+                        </div>
+                        
+                    </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </t>
+</template>
+
+
+<record id="paperformat_flower_booklet" model="report.paperformat">
+    <field name="name">Flower Booklet</field>
+    <field name="format">custom</field>
+    <field name="page_width">75</field>
+    <field name="page_height">75</field>
+    <field name="margin_top">0</field>
+    <field name="margin_bottom">0</field>
+    <field name="margin_left">0</field>
+    <field name="margin_right">0</field>
+    <field name="header_line" eval="False"/>
+    <field name="header_spacing">0</field>
+    <field name="dpi">90</field>
+</record>
+
+
+
+<record id="action_report_sale_order_flower" model="ir.actions.report">
+    <field name="name">Print Flower Booklet</field>
+    <field name="model">sale.order</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">flower_shop.report_sale_order</field>
+    <field name="binding_model_id" ref="sale.model_sale_order"/>
+    <field name="binding_type">report</field>
+    <field name="paperformat_id" ref="paperformat_flower_booklet"/>
+    <field name="multi">True</field>
+</record>
+
+</data>
+
+</odoo>

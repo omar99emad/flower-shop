@@ -29,7 +29,8 @@
         'views/product_product_views.xml',
         'views/template_product_inhert.xml',
         'views/flower_water_views.xml',
-        'views/stock_production_lot_inhert.xml'
+        'views/stock_production_lot_inhert.xml',
+        'reports/flower_sale_order_views.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

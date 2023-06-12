@@ -68,16 +68,14 @@
     </record>
 -->
 
-    <!-- Top menu item -->
+    <!-- Top menu item  web_icon="module_name,static/description/icon.png"-->
 
     <menuitem name="Flowers" id="flower_shop.menu_root" action="flower_shop_action_window"
-              web_icon="module_name,static/description/icon.png"/>
+              />
 
     <!-- menu categories -->
 
     <menuitem name="Flowers" id="flower_shop.menu_1" parent="flower_shop.menu_root" action="flower_shop_action_window"/>
-    <menuitem name="Flower Items" id="flower_shop.menu_2" parent="flower_shop.menu_1" action="flower_shop_action_window"/>
-    <menuitem name="Watering" id="flower_shop.menu_3" parent="flower_shop.menu_1" action="flower_shop.flower_water_action_window"/>
 
     <!-- actions -->
 <!--

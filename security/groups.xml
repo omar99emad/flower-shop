@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data >
+        <record id="group_gardeners" model="res.groups">
+            <field name="name">Gardeners</field>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <record id="record_rule_product_product_gardener" model="ir.rule">
+            <field name="name">Product Product Gardener Rule1</field>
+            <field name="model_id" ref="model_product_product"/>
+            <field name="domain_force">[(1,'=',1)] if user.user_has_groups('flower_shop.group_gardeners') else [('is_flower','=',False)]</field>
+            </record>
+
+        <record id="record_rule_product_product_gardener1" model="ir.rule">
+            <field name="name">Product Product Gardener Rule2</field>
+            <field name="model_id" ref="model_product_product"/>
+            <field name="groups" eval="[(4, ref('flower_shop.group_gardeners'))]"/>
+            <field name="domain_force">['|',('gardeners','=',False),('gardeners','in',user.id)]</field>
+        </record>
+
+
+    </data>
+</odoo>

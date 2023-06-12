@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="cron_action_needs_watering" model="ir.cron">
+            <field name="name">Needs Watering Action</field>
+            <field name="model_id" ref="model_product_product"/>
+            <field name="binding_model_id" ref="model_product_product"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="state">code</field>
+            <field name="code">model.action_needs_watering()</field>
+            <field name="interval_number">1</field> <!-- Run daily -->
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field> <!-- Repeat forever -->
+            <field name="user_id" ref="base.user_root"/> <!-- Run as admin user -->
+        </record>
+    </data>
+</odoo>

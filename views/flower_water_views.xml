@@ -41,6 +41,7 @@
 <!--For more convenience, add a server action that automatically attempts to water all the selected plants 
     from the stock.production.lot list view-->
 
+<menuitem name="Watering" id="flower_shop.menu_Watering" parent="flower_shop.menu_root" action="flower_water_action_window" sequence="10"/>
 
   </data>
 </odoo>  

@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class StockProductionLot(models.Model):
@@ -6,6 +6,16 @@ class StockProductionLot(models.Model):
 
     is_flower = fields.Boolean(related='product_id.is_flower', readonly=True)
     water_ids = fields.One2many("flower.water", "serial_id")
+
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            product = self.env["product.product"].browse(vals["product_id"])
+            if product.sequence_id:
+                vals["name"] = product.sequence_id.next_by_id()
+        return super().create(vals_list)
+
 
     def action_water_flower(self):
         flowers = self.filtered(lambda rec: rec.is_flower)

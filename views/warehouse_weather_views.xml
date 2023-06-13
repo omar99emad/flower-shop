@@ -1,0 +1,56 @@
+<odoo>
+    <data>
+
+        <!-- Form View -->
+        <record model="ir.ui.view" id="view_warehouse_weather_form">
+            <field name="name">warehouse.weather.form</field>
+            <field name="model">stock.warehouse.weather</field>
+            <field name="arch" type="xml">
+                <form string="Warehouse Weather">
+                    <sheet>
+                        <group>
+                            <field name="warehouse_id"/>
+                            <field name="temperature"/>
+                            <field name="pressure"/>
+                            <field name="humidity"/>
+                            <field name="wind_speed"/>
+                            <field name="rain_volume"/>
+                            <field name="description"/>
+                            <field name="capture_time"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree View -->
+        <record model="ir.ui.view" id="view_warehouse_weather_tree">
+            <field name="name">warehouse.weather.tree</field>
+            <field name="model">stock.warehouse.weather</field>
+            <field name="arch" type="xml">
+                <tree string="Warehouse Weather" editable="bottom">
+                    <field name="warehouse_id"/>
+                    <field name="temperature"/>
+                    <field name="pressure"/>
+                    <field name="humidity"/>
+                    <field name="wind_speed"/>
+                    <field name="rain_volume"/>
+                    <field name="description"/>
+                    <field name="capture_time"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record model="ir.actions.act_window" id="action_warehouse_weather">
+            <field name="name">Warehouse Weather</field>
+            <field name="res_model">stock.warehouse.weather</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menu Item -->
+        <menuitem id="menu_warehouse_weather" name="Warehouse Weather" parent="stock.menu_stock_root" sequence="2500"/>
+        <menuitem id="menu_warehouse_weather_list" name="Weather List" parent="menu_warehouse_weather" action="action_warehouse_weather"/>
+
+    </data>
+</odoo>

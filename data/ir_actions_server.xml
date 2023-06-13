@@ -1,0 +1,24 @@
+<odoo>
+    <data>
+        <record id="action_water_flower" model="ir.actions.server">
+            <field name="name">Water Flower</field>
+            <field name="model_id" ref="model_stock_production_lot"/>
+            <field name="state">code</field>
+            <field name="binding_model_id" ref="model_stock_production_lot"/>
+            <field name="binding_view_types">list,form</field>   
+            <field name="code">records.action_water_flower()</field> 
+        </record>
+
+        <record id="server_action_fetch_weather" model="ir.actions.server">
+            <field name="name">Fetch Weather Data for Warehouses</field>
+            <field name="model_id" ref="model_stock_warehouse"/>
+            <field name="state">code</field>
+            <field name="binding_model_id" ref="model_stock_warehouse"/>
+            <field name="binding_view_types">list</field>
+            <field name="code">model.get_weather_all_warehouses()</field>
+        </record>
+
+
+
+    </data>
+</odoo>
